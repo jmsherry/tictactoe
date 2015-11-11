@@ -3,6 +3,7 @@ describe("TicTacToe", function() {
 
   beforeEach(function(){
     game = new TicTacToe(3);
+    game.init();
   });
 
   it("should be loaded into the browser and be accessible", function() {
