@@ -4,6 +4,13 @@ describe("TicTacToe", function() {
   beforeEach(function(){
     game = new TicTacToe(3);
     game.init();
+
+    board = document.getElementsByClassName('board')[0];
+  });
+
+  afterEach(function(){
+    game = null;
+    document.body.removeChild(board);
   });
 
   it("should be loaded into the browser and be accessible", function() {
@@ -11,8 +18,7 @@ describe("TicTacToe", function() {
   });
 
   it("should create a board", function(){
-    board = document.getElementsByClassName('board');
-    expect(board.length).toBe(1);
+    expect(document.getElementsByClassName('board').length).toBe(1);
   });
 
 });
