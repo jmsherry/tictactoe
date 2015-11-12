@@ -9,7 +9,7 @@ describe("TicTacToe", function() {
     (function() {
       board = document.getElementsByClassName('board')[0];
     }());
-    
+
   });
 
   afterEach(function() {
@@ -21,13 +21,14 @@ describe("TicTacToe", function() {
     expect(window.TicTacToe).toBeDefined();
   });
 
-  it("It should create a board", function() {
-    expect(board).not.toBeUndefined();
-  });
+  describe('The Board', function() {
+    it("It should create a board", function() {
+      expect(board).not.toBeUndefined();
+    });
 
-  it("The board should have 9 squares", function() {
-    //var boards = document.getElementsByClassName('board');
-    expect(board.childNodes.length).toBe(9);
+    it("The board should have 9 squares", function() {
+      expect(board.childNodes.length).toBe(9);
+    });
   });
 
 });
