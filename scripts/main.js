@@ -1,9 +1,10 @@
 (function(){
   "use strict";
 
-  window.TicTacToe = window.TicTacToe || function(sideLength){
+  window.TicTacToe = window.TicTacToe || function(sideLength, playerNames, options){
 
-    var boardSize;
+    //THE BOARD
+    var boardSize, players = [];
 
     sideLength = sideLength | 3;
     boardSize = sideLength * sideLength;
@@ -37,13 +38,58 @@
 
     }
 
+
+    //THE PLAYERS
+    function addPlayer(name, i){
+      var player, turn, symbol;
+
+      turn = i = 0 ? true : false;
+      symbol = i = 0 ? "X" : "O";
+
+      player = {
+        id: players.length,
+        name: name,
+        turnToGo: turn,
+        symbol: symbol
+      };
+
+      players.push(player);
+    }
+
+    function getPlayers(){
+      return players;
+    }
+
+    function reportPlayersOnInterface(){
+      //add some code to write the names
+    }
+
+    function setupPlayers(){
+      if(playerNames.length < 2){
+        throw new Error("The minimum number of players is two.");
+      }
+      if(playerNames.length > 2){
+        throw new Error("The maximum number of players is two.");
+      }
+      playerNames.forEach(function(playerName, i){
+        addPlayer(playerName, i);
+      });
+
+      console.info("Players created", players);
+      //reportPlayersOnInterface();
+    }
+
+
     function init(){
       createBoard();
+      setupPlayers();
     }
 
 
     return {
-      init: init
+      init: init,
+      addPlayer: addPlayer,
+      getPlayers: getPlayers
     };
 
   };
